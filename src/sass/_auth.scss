@@ -1,0 +1,39 @@
+.background__auth {
+    background: linear-gradient(rgba(43, 21, 107, 0.8), rgba(43, 21, 107, 0.8)), url('../images/background/background_01.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: inherit;
+    position: fixed !important;
+}
+
+.circle__auth {
+    width: 50px;
+    height: 50px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    border: 1px solid whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #5F2EEA;
+}
+
+.line__auth {
+    width: 2px;
+    height: 30px;
+    position: relative;
+    left: 1.5rem;
+    background-color: white;
+    border: 0;
+}
+
+.eye__auth {
+    border: 0;
+    background-color: transparent;
+    outline: none !important;
+    position: absolute;
+    right: 10px;
+    top: 43px;
+}
