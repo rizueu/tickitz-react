@@ -1,8 +1,6 @@
 import { Fragment } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import logo from '../images/svg/logo-white.svg';
-import Separator from '../components/Separator';
-import { Link } from 'react-router-dom';
 
 const LeftSide = () => {
     return (

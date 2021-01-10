@@ -1,5 +1,7 @@
+import { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 
 // Import Components
 import NotFound from '../views/error/NotFound';
@@ -33,24 +35,39 @@ const Auth = () => {
 
     if( method === 'register' ) {
         return (
-            <Layout
-                LeftSide={<Register.LeftSide />} 
-                RightSide={<Register.RightSide />} 
-            />
+            <Fragment>
+                <Helmet>
+                    <title>Register - Tickitz</title>
+                </Helmet>
+                <Layout
+                    LeftSide={<Register.LeftSide />} 
+                    RightSide={<Register.RightSide />} 
+                />
+            </Fragment>
         )
     } else if( method === 'login' ) {
         return (
-            <Layout
-                LeftSide={<Login.LeftSide />} 
-                RightSide={<Login.RightSide />} 
-            />
+            <Fragment>
+                <Helmet>
+                    <title>Login - Tickitz</title>
+                </Helmet>
+                <Layout
+                    LeftSide={<Login.LeftSide />} 
+                    RightSide={<Login.RightSide />} 
+                />
+            </Fragment>
         )
     } else if( method === 'forgot' ) {
         return (
-            <Layout
-                LeftSide={<Forgot.LeftSide />} 
-                RightSide={<Forgot.RightSide />} 
-            />
+            <Fragment>
+                <Helmet>
+                    <title>Forgot Password - Tickitz</title>
+                </Helmet>
+                <Layout
+                    LeftSide={<Forgot.LeftSide />} 
+                    RightSide={<Forgot.RightSide />} 
+                />
+            </Fragment>
         )
     } else {
         return <NotFound/>
