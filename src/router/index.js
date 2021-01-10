@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import Home from '../views/Home';
 import Auth from '../views/Auth';
 import NavigationBar from '../components/NavigationBar';
+import Footer from '../components/Footer';
 import NotFound from '../views/error/NotFound';
 
 const Router = () => {
@@ -16,6 +17,7 @@ const Router = () => {
                 </Helmet>
                 <NavigationBar>
                     <Home />
+                    <Footer />
                 </NavigationBar>
             </Route>
             <Route path="/auth/:method" component={Auth} />

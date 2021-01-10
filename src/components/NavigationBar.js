@@ -19,7 +19,7 @@ const NavigationBar = (props) => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto mb-2 mb-lg-0">
                             <Form inline className="d-block d-lg-none position-relative">
-                                <svg style={{ top: "15px", left: "17px" }} className="position-absolute" width="20" fill="none" stroke="gray" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <svg style={{ top: "15px", left: "17px" }} className="position-absolute" width="20" fill="none" stroke="gray" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 <FormControl className="w-100 py-4 pl-5" type="text" placeholder="Search.." />
                             </Form>
                             <NavDropdown className="d-block d-lg-none text-center py-2" title="Location" id="basic-nav-dropdown">
@@ -47,7 +47,7 @@ const NavigationBar = (props) => {
                             </NavDropdown>
                             <Nav.Item className="d-none d-lg-block pr-4">
                                 <Nav.Link>
-                                    <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                    <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
