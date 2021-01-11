@@ -45,72 +45,72 @@ const Home = () => {
                             <Card.Body>
                                 <img src={spiderMan} alt="spider-man"/>
                             </Card.Body>
-                            <div className={`text-center position-relative p-3 d-none`}>
+                            {/* <div className={`text-center position-relative p-3 d-none`}>
                                 <h6>Spider-Man:<br/>Homecoming</h6>
                                 <small className="text-muted">Action, Adventure, Sci-Fi</small>
                                 <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
                                 <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div>
+                            </div> */}
                         </Card>
                         <Card 
                             className="mr-3">
                             <Card.Body>
                                 <img src={lionKing} alt="lion-king"/>
                             </Card.Body>
-                            <div className={`text-center position-relative p-3 d-none`}>
+                            {/* <div className={`text-center position-relative p-3 d-none`}>
                                 <h6>Spider-Man:<br/>Homecoming</h6>
                                 <small className="text-muted">Action, Adventure, Sci-Fi</small>
                                 <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
                                 <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div>
+                            </div> */}
                         </Card>
                         <Card 
                             className="mr-3">
                             <Card.Body>
                                 <img src={jhonWick} alt="jhon-wick-3"/>
                             </Card.Body>
-                            <div className={`text-center position-relative p-3 d-none`}>
+                            {/* <div className={`text-center position-relative p-3 d-none`}>
                                 <h6>Spider-Man:<br/>Homecoming</h6>
                                 <small className="text-muted">Action, Adventure, Sci-Fi</small>
                                 <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
                                 <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div>
+                            </div> */}
                         </Card>
                         <Card 
                             className="mr-3">
                             <Card.Body>
                                 <img src={spiderMan} alt="spider-man"/>
                             </Card.Body>
-                            <div className={`text-center position-relative p-3 d-none`}>
+                            {/* <div className={`text-center position-relative p-3 d-none`}>
                                 <h6>Spider-Man:<br/>Homecoming</h6>
                                 <small className="text-muted">Action, Adventure, Sci-Fi</small>
                                 <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
                                 <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div>
+                            </div> */}
                         </Card>
                         <Card 
                             className="mr-3">
                             <Card.Body>
                                 <img src={lionKing} alt="lion-king"/>
                             </Card.Body>
-                            <div className={`text-center position-relative p-3 d-none`}>
+                            {/* <div className={`text-center position-relative p-3 d-none`}>
                                 <h6>Spider-Man:<br/>Homecoming</h6>
                                 <small className="text-muted">Action, Adventure, Sci-Fi</small>
                                 <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
                                 <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div>
+                            </div> */}
                         </Card>
                         <Card 
                             className="mr-3">
                             <Card.Body>
                                 <img src={jhonWick} alt="jhon-wick-3"/>
                             </Card.Body>
-                            <div className={`text-center position-relative p-3 d-none`}>
+                            {/* <div className={`text-center position-relative p-3 d-none`}>
                                 <h6>Spider-Man:<br/>Homecoming</h6>
                                 <small className="text-muted">Action, Adventure, Sci-Fi</small>
                                 <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
                                 <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div>
+                            </div> */}
                         </Card>
                     </div>
                 </Container>

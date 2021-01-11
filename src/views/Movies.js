@@ -83,16 +83,16 @@ const Movies = () => {
                             <h3 className="font-weight-bold">Showtimes and Ticket</h3>
                         </Col>
                         <Col md={{ span: 3, offset: 3 }}>
-                            <Form.Control type="date" className="showtimes-form__movie" />
+                            <Form.Control type="date" />
                         </Col>
                         <Col md={3} className="mt-3 mt-md-0">
-                            <div className="w-auto">
+                            {/* <div className="w-auto">
                                 <svg className="form-icons" fill="none" stroke="#4E4B66" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
-                            </div>
-                            <Form.Control style={{ marginTop: '-1.8rem' }} as="select" className="showtimes-form__movie">
+                            </div> */}
+                            <Form.Control as="select">
                                 <option value="Purwokerto" selected>Purwokerto</option>
                             </Form.Control>
                         </Col>
