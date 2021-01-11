@@ -13,12 +13,12 @@ const Layout = (props) => {
     return (
         <Container fluid>
             <Row className="vh-100">
-                <Col md={7} className="background__auth text-white d-none d-md-block vh-100">
+                <Col lg={7} className="background__auth text-white d-none d-lg-block vh-100">
                     <Container>
                         {props.LeftSide}
                     </Container>
                 </Col>
-                <Col md={5} className="offset-md-7">
+                <Col lg={5} className="offset-lg-7">
                     <Container>
                         <div className="p-5">
                             {props.RightSide}
