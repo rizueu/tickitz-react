@@ -2,11 +2,11 @@ import { Fragment, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 // Import Components
-import Separator from '../components/Separator';
+import Separator from '../Separator';
 // Import Images
-import logo from '../images/svg/logo-white.svg';
-import eye from '../images/svg/eye.svg';
-import eyeOff from '../images/svg/eye-off.svg';
+import logo from '../../images/svg/logo-white.svg';
+import eye from '../../images/svg/eye.svg';
+import eyeOff from '../../images/svg/eye-off.svg';
 
 const LeftSide = () => {
     return (

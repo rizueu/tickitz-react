@@ -40,7 +40,7 @@ const ShowtimesCard = () => {
                         <p className="font-weight-bold">$10.00/seat</p>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <Link to="booking" className="btn btn-primary w-100 mr-3">Book now</Link>
+                        <Link to="/ticket/booking" className="btn btn-primary w-100 mr-3">Book now</Link>
                         <Link to="#" className="btn btn-outline-primary w-100">Add to cart</Link>
                     </div>
                 </Card.Body>

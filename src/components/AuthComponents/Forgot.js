@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import logo from '../images/svg/logo-white.svg';
+import logo from '../../images/svg/logo-white.svg';
 
 const LeftSide = () => {
     return (
