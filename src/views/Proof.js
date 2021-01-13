@@ -1,8 +1,6 @@
 import { Card, Button } from 'react-bootstrap';
 import Ticket from '../components/Ticket';
 import qrcode from '../images/qrCode.png';
-import download from '../images/svg/download.svg';
-import print from '../images/svg/print.svg';
 
 const Proof = () => {
     return (
@@ -25,7 +23,7 @@ const Proof = () => {
                             <Button style={{ color: "#000" }} variant="outline-secondary" className="mr-2">
                                 Download
                             </Button>
-                            <Button style={{ color: "#000" }} variant="outline-secondary" className="">
+                            <Button style={{ color: "#000" }} variant="outline-secondary">
                                 Print
                             </Button>
                         </div>
