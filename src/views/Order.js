@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
@@ -23,7 +23,10 @@ const Layout = props => {
 }
 
 const Order = () => {
+    let seatSelected = [];
     const { method } = useParams();
+
+    console.log(seatSelected);
 
     if( method === 'booking' ) {
         return (
@@ -65,205 +68,205 @@ const Order = () => {
                                         </Row>
                                         <div className="seats">
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="A1" />
+                                                <div className="checkmark"></div> 
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="A2" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="A3" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="A4" disabled/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" disabled/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="A5" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="A6" disabled/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" disabled/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <br/>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id="" disabled/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id="" disabled/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="A7" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <br/>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="B1" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="B2" disabled/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="B3" disabled/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" checked/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="B4" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" checked/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="B5" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" checked/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="B6" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <br/>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id="" disabled/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="B7" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <br/>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="C1" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="C2" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="C3"/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" disabled/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="C4" checked/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="C5" checked/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="C6" checked/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <br/>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="C7" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <br/>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }  value="D1" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }  value="D2" disabled/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" disabled/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }  value="D3" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="D4" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="D5" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="D6" />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="D7" />
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <br/>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="E1"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="E2" />
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="E3" />
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="E4" disabled/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="E5" />
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="E6"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="E7"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <br/>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="F1"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="F2"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="F3"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="F4"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="F5"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="F6"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="F7"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <br/>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="G1"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="G2"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="G3" disabled/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="G4"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="G5"/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="G6" />
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } value="G7"/>
                                                 <div className="checkmark"></div>
                                             </label>
                                         </div>
@@ -271,94 +274,94 @@ const Order = () => {
                                     <Col className="d-flex justify-content-end">
                                         <div className="seats">
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" disabled />
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } disabled />
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <br/>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
-                                                <div className="checkmark"></div>
-                                            </label>
-                                            <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <br/>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" disabled />
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id="" disabled />
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <br/>
                                             <label>
-                                                <input type="checkbox" name="" id=""/>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } disabled />
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' } disabled />
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
+                                                <div className="checkmark"></div>
+                                            </label>
+                                            <br/>
+                                            <label>
+                                                <input type="checkbox" name="" id="" onChange={e => e.target.checked ? seatSelected.push(e.target.value) : '' }/>
                                                 <div className="checkmark"></div>
                                             </label>
                                             <label>
