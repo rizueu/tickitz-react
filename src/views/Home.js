@@ -1,17 +1,33 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
 
 // Import Images
 import HeroImage from '../images/hero.png';
-import spiderMan from '../images/cover/now-showing/spiderman.jpg';
-import lionKing from '../images/cover/now-showing/lionking.jpg';
-import jhonWick from '../images/cover/now-showing/jhonwick3.jpg';
-import blackWidow from '../images/cover/upcoming/blackwidow.jpg';
-import tenet from '../images/cover/upcoming/tenet.jpg';
-import theWitches from '../images/cover/upcoming/witches.jpg';
+
+// Import Dummys Data
+import UpcomingMovies from '../factory/UpcomingMovies';
+import NowShowing from '../factory/NowShowing';
 
 const Home = () => {
+    let seasons = [
+        'September',
+        'October',
+        'November',
+        'Desember',
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August'
+    ]
+
+    const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
+    const [loading, setLoading] = useState(false);
+
    return (
         <Fragment>
             <Container>
@@ -23,7 +39,7 @@ const Home = () => {
                         </div>
                     </Col>
                     <Col lg={6} className="d-flex justify-content-center">
-                        <img src={HeroImage} alt="hero" />
+                        <img src={HeroImage} alt="hero" className="img-fluid" />
                     </Col>
                 </Row>
             </Container>
@@ -40,78 +56,27 @@ const Home = () => {
                         </Col>
                     </Row>
                     <div className="now-showing__home landscape-list__home">
-                        <Card 
-                            className="mr-3">
-                            <Card.Body>
-                                <img src={spiderMan} alt="spider-man"/>
-                            </Card.Body>
-                            {/* <div className={`text-center position-relative p-3 d-none`}>
-                                <h6>Spider-Man:<br/>Homecoming</h6>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
-                                <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div> */}
-                        </Card>
-                        <Card 
-                            className="mr-3">
-                            <Card.Body>
-                                <img src={lionKing} alt="lion-king"/>
-                            </Card.Body>
-                            {/* <div className={`text-center position-relative p-3 d-none`}>
-                                <h6>Spider-Man:<br/>Homecoming</h6>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
-                                <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div> */}
-                        </Card>
-                        <Card 
-                            className="mr-3">
-                            <Card.Body>
-                                <img src={jhonWick} alt="jhon-wick-3"/>
-                            </Card.Body>
-                            {/* <div className={`text-center position-relative p-3 d-none`}>
-                                <h6>Spider-Man:<br/>Homecoming</h6>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
-                                <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div> */}
-                        </Card>
-                        <Card 
-                            className="mr-3">
-                            <Card.Body>
-                                <img src={spiderMan} alt="spider-man"/>
-                            </Card.Body>
-                            {/* <div className={`text-center position-relative p-3 d-none`}>
-                                <h6>Spider-Man:<br/>Homecoming</h6>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
-                                <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div> */}
-                        </Card>
-                        <Card 
-                            className="mr-3">
-                            <Card.Body>
-                                <img src={lionKing} alt="lion-king"/>
-                            </Card.Body>
-                            {/* <div className={`text-center position-relative p-3 d-none`}>
-                                <h6>Spider-Man:<br/>Homecoming</h6>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
-                                <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div> */}
-                        </Card>
-                        <Card 
-                            className="mr-3">
-                            <Card.Body>
-                                <img src={jhonWick} alt="jhon-wick-3"/>
-                            </Card.Body>
-                            {/* <div className={`text-center position-relative p-3 d-none`}>
-                                <h6>Spider-Man:<br/>Homecoming</h6>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <Link className="btn btn-primary btn-block mt-3" to="">Detail</Link>
-                                <Link className="btn btn-outline-primary btn-block" to="">Book Now</Link>
-                            </div> */}
-                        </Card>
+                        {
+                            NowShowing.map((element, index) => {
+                                return (
+                                    <Card 
+                                        key={index.toString()}
+                                        className="mr-3">
+                                        <Card.Body>
+                                            <img src={element.poster} alt={element.title} />
+                                        </Card.Body>
+                                        <div className="movies-dropdown d-none">
+                                            <div className="position-absolute p-3">
+                                                <h6 className="font-weight-bold">{element.title}</h6>
+                                                <small className="text-muted">{element.genre}</small>
+                                                <Button variant="outline-primary" className="btn-block" >Detail</Button>
+                                                <Button className="btn-block">Book Now</Button>
+                                            </div>
+                                        </div>
+                                    </Card>
+                                )
+                            })
+                        }
                     </div>
                 </Container>
             </div>
@@ -128,74 +93,42 @@ const Home = () => {
                         </Col>
                     </Row>
                     <div className="landscape-list__home mb-4">
-                        <Button variant="primary" className="mr-2 py-2">September</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">October</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">November</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">Desember</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">January</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">February</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">March</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">April</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">May</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">June</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">July</Button>
-                        <Button variant="outline-primary" className="mr-2 py-2">August</Button>
+                        {
+                            seasons.map((element, index) => {
+                                return (
+                                    <Button
+                                        key={index.toString()}
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            setLoading(true);
+                                            setSelectedSeason(element);
+                                            setTimeout(() => setLoading(false), 1000);
+                                        }}
+                                        variant={ selectedSeason === element ? 'primary' : 'outline-primary' }
+                                        className="mr-2 py-2">
+                                            {element}
+                                    </Button>
+                                )
+                            })
+                        }
                     </div>
                     <div className="upcoming-movies__home landscape-list__home">
-                        <Card className="border p-2 text-center mr-3">
-                            <Card.Body>
-                                <img src={blackWidow} alt="black-widow"/>
-                                <h5 className="font-weight-bold mt-3">Black Widow</h5>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <br/>
-                                <Link to="/movies/2021/black-widow" className="btn btn-outline-primary w-100 mt-5">Details</Link>
-                            </Card.Body>
-                        </Card>
-                        <Card className="border p-2 text-center mr-3">
-                            <Card.Body>
-                                <img src={tenet} alt="tenet"/>
-                                <h5 className="font-weight-bold mt-3">Tenet</h5>
-                                <small className="text-muted">Action, Sci-Fi</small>
-                                <br/>
-                                <Link to="/movies/2020/tenet" className="btn btn-outline-primary w-100 mt-5">Details</Link>
-                            </Card.Body>
-                        </Card>
-                        <Card className="border p-2 text-center mr-3">
-                            <Card.Body>
-                                <img src={theWitches} alt="the-witches"/>
-                                <h5 className="font-weight-bold mt-3">The Witches</h5>
-                                <small className="text-muted">Adventure, Comedy, Family</small>
-                                <br/>
-                                <Link to="/movies/2020/the-witches" className="btn btn-outline-primary w-100 mt-5">Details</Link>
-                            </Card.Body>
-                        </Card>
-                        <Card className="border p-2 text-center mr-3">
-                            <Card.Body>
-                                <img src={blackWidow} alt="black-widow"/>
-                                <h5 className="font-weight-bold mt-3">Black Widow</h5>
-                                <small className="text-muted">Action, Adventure, Sci-Fi</small>
-                                <br/>
-                                <Link to="/movies/2021/black-widow" className="btn btn-outline-primary w-100 mt-5">Details</Link>
-                            </Card.Body>
-                        </Card>
-                        <Card className="border p-2 text-center mr-3">
-                            <Card.Body>
-                                <img src={tenet} alt="tenet"/>
-                                <h5 className="font-weight-bold mt-3">Tenet</h5>
-                                <small className="text-muted">Action, Sci-Fi</small>
-                                <br/>
-                                <Link to="/movies/2020/tenet" className="btn btn-outline-primary w-100 mt-5">Details</Link>
-                            </Card.Body>
-                        </Card>
-                        <Card className="border p-2 text-center mr-3">
-                            <Card.Body>
-                                <img src={theWitches} alt="the-witches"/>
-                                <h5 className="font-weight-bold mt-3">The Witches</h5>
-                                <small className="text-muted">Adventure, Comedy, Family</small>
-                                <br/>
-                                <Link to="/movies/2020/the-witches" className="btn btn-outline-primary w-100 mt-5">Details</Link>
-                            </Card.Body>
-                        </Card>
+                        {
+                            loading ? <div>Loading...</div> : 
+                            UpcomingMovies.map((element, index) => {
+                                return (
+                                    <Card key={index.toString()} className="border p-2 text-center mr-3">
+                                        <Card.Body>
+                                            <img src={element.poster} alt={element.title}/>
+                                            <h5 className="font-weight-bold mt-3">{element.title}</h5>
+                                            <small className="text-muted">{element.genre}</small>
+                                            <br/>
+                                            <Link to={element.link} className="btn btn-outline-primary w-100 mt-5">Details</Link>
+                                        </Card.Body>
+                                    </Card>
+                                )
+                            })
+                        }
                     </div>
                 </Container>
             </div>

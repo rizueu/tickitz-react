@@ -7,6 +7,7 @@ import Auth from '../views/Auth';
 import Movies from '../views/Movies';
 import Order from '../views/Order';
 import Proof from '../views/Proof';
+import UserDashboard from '../views/UserDashboard';
 import NavigationBar from '../components/NavigationBar';
 import Footer from '../components/Footer';
 import NotFound from '../views/error/NotFound';
@@ -45,6 +46,12 @@ const Router = () => {
                 <NavigationBar>
                     <Proof />
                     <Footer />
+                </NavigationBar>
+            </Route>
+            <Route path="/profile">
+                <NavigationBar>
+                    <UserDashboard/>
+                    <Footer/>
                 </NavigationBar>
             </Route>
             <Route path="/auth/:method" component={Auth} />

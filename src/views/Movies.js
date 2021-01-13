@@ -9,6 +9,9 @@ import ShowtimesCard from '../components/ShowtimesCard';
 const Movies = () => {
     const { year, slug } = useParams();
     const [movie, setMovie] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [date, setDate] = useState();
+    const [location, setLocation] = useState();
 
     const getMovie = async () => {
         try {
@@ -18,6 +21,9 @@ const Movies = () => {
             throw new Error(e.message);
         }
     }
+
+    console.log(date);
+    console.log(location);
 
     useEffect(() => {
         getMovie();
@@ -78,12 +84,21 @@ const Movies = () => {
             </Container>
             <div style={{ backgroundColor: "#F5F6F8" }} className="py-5">
                 <Container>
-                    <Row>
+                    <form 
+                        className="row">
                         <Col xs={12} className="py-4 text-center">
                             <h3 className="font-weight-bold">Showtimes and Ticket</h3>
                         </Col>
                         <Col md={{ span: 3, offset: 3 }}>
-                            <Form.Control type="date" className="showtimes-form__movie" />
+                            <Form.Control
+                                onChange={(e) => {
+                                    setLoading(true);
+                                    setDate(e.target.value);
+                                    setTimeout(() => setLoading(false), 1000);
+                                }}
+                                value={date}
+                                type="date" 
+                                className="showtimes-form__movie" />
                         </Col>
                         <Col md={3} className="mt-3 mt-md-0">
                             <div className="w-auto">
@@ -92,15 +107,29 @@ const Movies = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
                             </div>
-                            <Form.Control style={{ marginTop: "-29px" }} as="select" className="showtimes-form__movie">
+                            <Form.Control 
+                                onChange={(e) => {
+                                    setLoading(true);
+                                    setLocation(e.target.value);
+                                    setTimeout(() => setLoading(false), 1000);
+                                }}
+                                style={{ marginTop: "-29px" }} as="select" className="showtimes-form__movie">
                                 <option value="Purwokerto" selected>Purwokerto</option>
+                                <option value="Surabaya">Surabaya</option>
+                                <option value="Jakarta">Jakarta</option>
                             </Form.Control>
                         </Col>
-                    </Row>
+                    </form>
                     <Row className="py-4">
-                        <ShowtimesCard/>
-                        <ShowtimesCard/>
-                        <ShowtimesCard/>
+                        {
+                            loading ? <div>Loading...</div> : (
+                                <>
+                                    <ShowtimesCard />
+                                    <ShowtimesCard />
+                                    <ShowtimesCard />
+                                </>
+                            )
+                        }
                         <Col xs={12} className="text-center mt-5">
                             <button className="btn text-primary mt-4 text-decoration-none">view more</button>
                         </Col>

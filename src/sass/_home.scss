@@ -18,6 +18,7 @@
 .landscape-list__home {
     display: flex;
     overflow-x: scroll;
+    // overflow-y: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -41,6 +42,11 @@
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.17);
 
+}
+
+.now-showing__home .card:hover > .movies-dropdown {
+    display: inline-block !important;
+    text-align: center;
 }
 
 .upcoming-movies__home .card {

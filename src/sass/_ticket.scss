@@ -1,0 +1,65 @@
+$halfCircleSize: 30px;
+
+.ticket .card:nth-child(1) {
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+    border-right-style: dashed;
+}
+
+.ticket .card:nth-child(2) {
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    border-left-style: dashed;
+}
+
+.ticket .card:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -$halfCircleSize;
+    width: $halfCircleSize * 2;
+    height: $halfCircleSize;
+    border-bottom-left-radius: $halfCircleSize * 2;
+    border-bottom-right-radius: $halfCircleSize * 2;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-top: 0 !important;
+    background-color: white;
+    z-index: 10;
+}
+
+.ticket .card:nth-child(1)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -$halfCircleSize;
+    width: $halfCircleSize * 2;
+    height: $halfCircleSize;
+    border-top-left-radius: $halfCircleSize * 2;
+    border-top-right-radius: $halfCircleSize * 2;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 0 !important;
+    background-color: white;
+    z-index: 10;
+}
+
+.ticket-button button {
+    display: flex;
+}
+
+.ticket-button button:nth-child(1)::before {
+    content: '';
+    background: url('../images/svg/download.svg');
+    width: 25px;
+    height: 25px;
+    margin-right: 0.5rem;
+}
+
+.ticket-button button:nth-child(2)::before {
+    content: '';
+    background: url('../images/svg/print.svg');
+    width: 25px;
+    height: 25px;
+    margin-right: 0.5rem;
+}
+
+.ticket-button button:hover {
+    color: white !important;
+}

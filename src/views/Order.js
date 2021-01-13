@@ -539,7 +539,7 @@ const Order = () => {
                                 </div>
                                 <div className="d-flex justify-content-between mt-3">
                                     <small className="text-muted">Movie selected</small>
-                                    <small className="font-weight-bold">Black Widow</small>
+                                    <small className="font-weight-bold">The Witches</small>
                                 </div>
                                 <div className="d-flex justify-content-between mt-3">
                                     <small className="text-muted">Tuesday, 07 July 2020</small>
@@ -583,7 +583,7 @@ const Order = () => {
                                 <hr/>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <span className="text-muted">Movie Title</span>
-                                    <span>Spider-Man: Homecoming</span>
+                                    <span>The Witches</span>
                                 </div>
                                 <hr/>
                                 <div className="d-flex justify-content-between align-items-center">
@@ -754,7 +754,7 @@ const Order = () => {
                             <Link to="/ticket/booking" style={{ fontSize: "15px" }} className="btn btn-outline-primary rounded-3 py-3 w-100">Previous Step</Link>
                         </div>
                         <div className="col">
-                            <button style={{ fontSize: "15px" }} className="btn btn-primary rounded-3 py-3 w-100">Pay your order</button>
+                            <Link to="/ticket/payment/result" style={{ fontSize: "15px" }} className="btn btn-primary rounded-3 py-3 w-100">Pay your order</Link>
                         </div>
                     </div>
                 </div>

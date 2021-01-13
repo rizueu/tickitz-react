@@ -42,6 +42,9 @@ const LeftSide = () => {
 
 const RightSide = () => {
     const [peekPassword, setPeekPassword] = useState(false);
+    const [approveTerms, setApproveTerms] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     function showPassword() {
         if( peekPassword === false ){
@@ -51,17 +54,33 @@ const RightSide = () => {
         }
     }
 
+    function submitHandler() {
+        
+    }
+
     return (
         <Fragment>
             <h4 className="mb-4">Fill your additional details</h4>
-            <Form>
+            <Form
+                onSubmit={submitHandler}
+            >
                 <Form.Group controlId="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Write your email" className="p-4 rounded"></Form.Control>
+                    <Form.Control
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}
+                        type="email"
+                        placeholder="Write your email"
+                        className="p-4 rounded" />
                 </Form.Group>
                 <Form.Group controlId="password" className="position-relative">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type={peekPassword === false ? 'password' : 'text'} placeholder="Write your password" className="p-4 rounded" />
+                    <Form.Control 
+                        onChange={e => setPassword(e.target.value)}
+                        value={password}
+                        type={peekPassword === false ? 'password' : 'text'} 
+                        placeholder="Write your password" 
+                        className="p-4 rounded" />
                     <button onClick={(e) => {
                         e.preventDefault();
                         showPassword();
@@ -71,9 +90,12 @@ const RightSide = () => {
                     </button>
                 </Form.Group>
                 <Form.Group controlId="terms">
-                    <Form.Check type="checkbox" label="I agree to terms & conditions" className="text-muted" />
+                    <Form.Check 
+                        onClick={e => setApproveTerms(e.target.checked)}
+                        type="checkbox" label="I agree to terms & conditions" className="text-muted" />
                 </Form.Group>
-                <Button variant="primary" type="submit" className="btn-block py-3 rounded">
+                <Button
+                    variant="primary" type="submit" className={`btn-block py-3 rounded ${!approveTerms ? 'disabled' : ''}`}>
                     Join for free now
                 </Button>
             </Form>
