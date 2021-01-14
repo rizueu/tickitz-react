@@ -20,7 +20,7 @@ const ChartByMovie = () => {
     )
 }
 
-const ChartByLocation = => {
+const ChartByLocation = () => {
     return (
         <Row>
             <ChartCard />
