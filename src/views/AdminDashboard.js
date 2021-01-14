@@ -20,6 +20,19 @@ const ChartByMovie = () => {
     )
 }
 
+const ChartByLocation = => {
+    return (
+        <Row>
+            <ChartCard />
+            <ChartCard />
+            <ChartCard />
+            <ChartCard />
+            <ChartCard />
+            <ChartCard />
+        </Row>
+    )
+}
+
 const AdminDashboard = () => {
     const [selectedPage, setSelectedPage] = useState('based-on-movie');
 
