@@ -38,3 +38,40 @@
     position: absolute;
     background: #5F2EEA;
 }
+
+.navbar-item a.active {
+    color: black !important;
+}
+
+.navbar-item a.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid #5F2EEA;
+}
+
+.ticket-history .btn:nth-child(1) {
+    width: 150px;
+}
+
+
+.ticket-history .btn:nth-child(1):disabled {
+    background-color: #6E7191;
+    border: 0;
+}
+
+.ticket-history .btn:nth-child(2) {
+    padding-right: 2.5rem;
+}
+
+.ticket-history .btn:nth-child(2)::after {
+    content: '';
+    background: url('../images/svg/chevron.svg');
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
