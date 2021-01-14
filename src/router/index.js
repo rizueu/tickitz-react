@@ -9,6 +9,7 @@ import Order from '../views/Order';
 import Proof from '../views/Proof';
 import UserDashboard from '../views/UserDashboard';
 import NavigationBar from '../components/NavigationBar';
+import AdminDashboard from '../views/AdminDashboard';
 import Footer from '../components/Footer';
 import NotFound from '../views/error/NotFound';
 
@@ -51,6 +52,12 @@ const Router = () => {
             <Route path="/profile">
                 <NavigationBar>
                     <UserDashboard/>
+                    <Footer/>
+                </NavigationBar>
+            </Route>
+            <Route path="/admin">
+                <NavigationBar>
+                    <AdminDashboard/>
                     <Footer/>
                 </NavigationBar>
             </Route>
