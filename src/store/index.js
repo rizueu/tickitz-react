@@ -1,6 +1,9 @@
-import { selector, atom } from 'recoil';
+import { atom } from 'recoil';
+import User from '../factory/User';
 
-const peekPasswordState = atom({
-    key: 'peekPasswordState',
-    default: false
+const DataUser = atom({
+    key: 'DataUser',
+    default: User
 });
+
+export { DataUser };

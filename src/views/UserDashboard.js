@@ -1,10 +1,32 @@
 import { Fragment, useState } from 'react';
-import { Container, Row, Col, Card, Form, Button, Nav, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Nav, InputGroup, Alert } from 'react-bootstrap';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 // Import Picture
 import UserPic from '../images/user.png';
 
+// Dummy Data
+import { DataUser } from '../store';
+
 const AccountSettings = () => {
+    const [user, setUser] = useRecoilState(DataUser);
+    const [firstName, setFirstName] = useState(user.firstName);
+    const [lastName, setLastName] = useState(user.lastName);
+    const [email, setEmail] = useState(user.email);
+    const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
+    const [updated, setUpdated] = useState(false);
+
+    const submitHandler = () => {
+        setUser({
+            firstName: firstName,
+            lastName: lastName,
+            fullName: firstName + ' ' + lastName,
+            email: email,
+            phoneNumber: phoneNumber
+        });
+        setUpdated(true);
+    }
+    
     return (
         <Fragment>
             <Card style={{ borderRadius: "1rem" }} className="border-0 my-4">
@@ -13,35 +35,38 @@ const AccountSettings = () => {
                         <span>Details Information</span>
                     </Card.Header>
                     <Card.Body>
+                        {
+                            updated ? <Alert variant="success" onClose={() => setUpdated(false)} dismissible>Your profile updated.</Alert> : ''
+                        }
                         <Form className="mt-3">
                             <Row>
-                                <Col xs={6}>
+                                <Col md={6}>
                                     <Form.Group>
                                         <Form.Label>First Name</Form.Label>
-                                        <Form.Control type="text" value="Jonas" className="rounded p-4" />
+                                        <Form.Control type="text" onChange={e => setFirstName(e.target.value)} value={firstName} className="rounded p-4" />
                                     </Form.Group>
                                 </Col>
-                                <Col xs={6}>
+                                <Col md={6}>
                                     <Form.Group>
                                         <Form.Label>Last Name</Form.Label>
-                                        <Form.Control type="text" value="El Rodriguez" className="rounded p-4" />
+                                        <Form.Control type="text" onChange={e => setLastName(e.target.value)} value={lastName} className="rounded p-4" />
                                     </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={6}>
+                                <Col md={6}>
                                     <Form.Group>
                                         <Form.Label>E-mail</Form.Label>
-                                        <Form.Control type="email" value="jonasrodrigu123@gmail.com" className="rounded p-4" />
+                                        <Form.Control type="email" onChange={e => setEmail(e.target.value)} value={email} className="rounded p-4" />
                                     </Form.Group>
                                 </Col>
-                                <Col xs={6}>
+                                <Col md={6}>
                                     <Form.Label>Phone Number</Form.Label>
                                     <InputGroup>
                                         <InputGroup.Prepend>
                                             <InputGroup.Text className="bg-white">+62</InputGroup.Text>
                                         </InputGroup.Prepend>
-                                        <Form.Control type="tel" value="81445687121" className="rounded p-4" />
+                                        <Form.Control type="tel" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber} className="rounded p-4" />
                                     </InputGroup>
                                 </Col>
                             </Row>
@@ -57,13 +82,13 @@ const AccountSettings = () => {
                     <Card.Body>
                         <Form className="mt-3">
                             <Row>
-                                <Col xs={6}>
+                                <Col md={6}>
                                     <Form.Group>
                                         <Form.Label>New Password</Form.Label>
                                         <Form.Control type="password" placeholder="Write your password" className="rounded p-4" />
                                     </Form.Group>
                                 </Col>
-                                <Col xs={6}>
+                                <Col md={6}>
                                     <Form.Group>
                                         <Form.Label>Confirm Password</Form.Label>
                                         <Form.Control type="password" placeholder="Confirm your password" className="rounded p-4" />
@@ -75,7 +100,11 @@ const AccountSettings = () => {
                 </Container>
             </Card>
             <div className="text-center">
-                <Button variant="primary" type="submit" className="rounded-pill mt-2 py-3 w-50">Update changes</Button>
+                <Button
+                    onClick={submitHandler}
+                    variant="primary" type="submit" className="rounded-pill mt-2 py-3 w-50">
+                        Update changes
+                </Button>
             </div>
         </Fragment>
     )
@@ -147,6 +176,7 @@ const OrderHistory = () => {
 
 const UserDashboard = () => {
     const [selectedPage, setSelectedPage] = useState('account-settings');
+    const User = useRecoilValue(DataUser);
 
     return (
         <div style={{ backgroundColor: "#F6F6F6" }} className="py-5">
@@ -165,7 +195,7 @@ const UserDashboard = () => {
                                 </div>
                                 <div className="text-center">
                                     <img src={UserPic} alt="user" className="img-fluid rounded-circle"/>
-                                    <h5>Jonas El Rodriguez</h5>
+                                    <h5>{ User.fullName }</h5>
                                     <span className="text-muted">Moviegoers</span>
                                 </div>
                             </Card.Header>
@@ -186,7 +216,7 @@ const UserDashboard = () => {
                                             </svg>
                                         </div>
                                         <span className="text-white loyalty-points">
-                                            320 
+                                            240
                                             <small>points</small>
                                         </span>
                                     </Card.Body>
