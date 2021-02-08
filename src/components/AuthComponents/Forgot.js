@@ -1,6 +1,8 @@
-import { Fragment } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import logo from '../../images/svg/logo-white.svg';
+import { Fragment, useState } from 'react'
+import { Form, Button, Alert } from 'react-bootstrap'
+import axios from 'axios'
+import logo from '../../images/svg/logo-white.svg'
+
 
 const LeftSide = () => {
     return (
@@ -42,14 +44,31 @@ const LeftSide = () => {
 }
 
 const RightSide = () => {
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+
+    async function submitHandler(e) {
+        e.preventDefault()
+        try {
+            await axios.patch(`${process.env.REACT_APP_API_URL}auth/forgot_password`, {email: email})
+            setMessage('Please check your email!')
+        } catch (error) {
+            setMessage(error.response.data.message)
+            console.error(error.response.data.message)
+        }
+    }
+
     return (
         <Fragment>
             <h4>Fill your complete email</h4>
             <p className="text-muted mb-4">we'll send a link to your email shortly</p>
-            <Form>
+            {message ? <Alert variant="success">{message}</Alert> : ''}
+            <Form
+                onSubmit={submitHandler}
+            >
                 <Form.Group controlId="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Write your email" className="p-4 rounded"></Form.Control>
+                    <Form.Control onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="Write your email" className="p-4 rounded"></Form.Control>
                 </Form.Group>
                 <Button variant="primary" type="submit" className="btn-block py-3 rounded">
                     Join for free now

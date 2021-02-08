@@ -1,33 +1,27 @@
 import { Fragment, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col, Card, Form } from 'react-bootstrap'
-import { default as axios } from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import { getMovieById } from '../redux/actions/movies'
+import { getShowtimes } from '../redux/actions/showtimes'
+import moment from 'moment'
 
 // Import Components
 import ShowtimesCard from '../components/ShowtimesCard';
 
 const Movies = () => {
-    const { year, slug } = useParams();
-    const [movie, setMovie] = useState({});
+    const { id } = useParams()
+    const movie = useSelector(state => state.movies.movie)
+    const showtimes = useSelector(state => state.showtimes.results)
+    const dispatch = useDispatch()
     const [loading, setLoading] = useState(false);
-    const [date, setDate] = useState();
-    const [location, setLocation] = useState();
-
-    const getMovie = async () => {
-        try {
-            let {data} = await axios.get(`http://www.omdbapi.com/?apikey=b1eeb9ae&t=${slug}&y=${year}`)
-            setMovie(data);
-        } catch (e) {
-            throw new Error(e.message);
-        }
-    }
-
-    console.log(date);
-    console.log(location);
+    const [date, setDate] = useState(moment(Date.now()).format('yyyy-MM-DD'));
+    const [location, setLocation] = useState('Purwokerto');
 
     useEffect(() => {
-        getMovie();
-    }, [slug, year]); // eslint-disable-line react-hooks/exhaustive-deps
+        getMovieById(id, dispatch)
+        dispatch(getShowtimes(id, date, location))
+    }, [id, date, location, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <Fragment>
@@ -36,35 +30,35 @@ const Movies = () => {
                     <Col lg={3}>
                         <Card className="border-0 rounded">
                             <Card.Body className="d-flex justify-content-center align-items-center">
-                                <img src={movie.Poster} alt={slug} width="240" className="img-fluid rounded"/>
+                                <img src={movie.picture} alt="movie" width="240" className="img-fluid rounded"/>
                             </Card.Body>
                         </Card>
                     </Col>
                     <Col lg={8}>
 
                         <div className="text-center text-lg-left">
-                            <h2 className="font-weight-bold">{movie.Title}</h2>
-                            <p className="text-muted">{movie.Genre}</p>
+                            <h2 className="font-weight-bold">{movie.title}</h2>
+                            <p className="text-muted">{movie.genres}</p>
                         </div>
 
                         <Row className="py-3">
                             <Col>
                                 <small className="text-muted">Release date</small>
                                 <br/>
-                                <small>{movie.Released}</small>
+                                <small>{moment(movie.releaseDate).format('D MMM YYYY')}</small>
                                 <br/><br/>
                                 <small className="text-muted">Duration</small>
                                 <br/>
-                                <small>{movie.Runtime}</small>
+                                <small>{movie.duration}</small>
                             </Col>
                             <Col>
                                 <small className="text-muted">Directed by</small>
                                 <br/>
-                                <small>{movie.Director}</small>
+                                <small>{movie.director}</small>
                                 <br/><br/>
                                 <small className="text-muted">Casts</small>
                                 <br/>
-                                <small>{movie.Actors}</small>
+                                <small>{movie.casts}</small>
                             </Col>
                         </Row>
 
@@ -74,7 +68,7 @@ const Movies = () => {
                             <Col>
                                 <h5>Synopsis</h5>
                                 <p className="text-muted">
-                                    {movie.Plot}
+                                    {movie.synopsis}
                                 </p>
                             </Col>
                         </Row>
@@ -122,13 +116,13 @@ const Movies = () => {
                     </form>
                     <Row className="py-4">
                         {
-                            loading ? <div>Loading...</div> : (
-                                <>
-                                    <ShowtimesCard />
-                                    <ShowtimesCard />
-                                    <ShowtimesCard />
-                                </>
-                            )
+                            loading ? <div>Loading...</div> : showtimes.map((element, index) => {
+                                return (
+                                    <Fragment key={String(index)}>
+                                        <ShowtimesCard picture={element.picture} cinemaName={element.cinemaName} address={element.address} price={element.pricePerSeat} showtimes={element.showTime} showTimeDate={date} cinemaId={element.id} movieId={id} indexShowTime={index} />
+                                    </Fragment>
+                                )
+                            })
                         }
                         <Col xs={12} className="text-center mt-5">
                             <button className="btn text-primary mt-4 text-decoration-none">view more</button>

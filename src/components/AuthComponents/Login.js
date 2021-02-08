@@ -1,6 +1,9 @@
-import { Fragment, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Fragment, useEffect, useState } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { Link, useLocation } from 'react-router-dom';
+// State Management
+import { useSelector, useDispatch } from 'react-redux'
+import { login } from '../../redux/actions/auth'
 // Import Components
 import Separator from '../Separator';
 // Import Images
@@ -13,13 +16,20 @@ const LeftSide = () => {
         <Fragment>
             <div className="d-flex justify-content-center align-items-center flex-column text-center vh-100">
                 <img width="350" src={logo} alt="tickitz-logo-white"/>
-                <p style={{ fontSize: "32px", marginTop: "-20px" }} class="text-white">wait, watch, wow!</p>
+                <p style={{ fontSize: "32px", marginTop: "-20px" }} className="text-white">wait, watch, wow!</p>
             </div>
         </Fragment>
     )
 }
 
 const RightSide = () => {
+    const location = useLocation()
+    const errorMsg = useSelector(state => state.auth.errorMsg)
+    const dispatch = useDispatch()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [success, setSuccess] = useState(null)
     const [peekPassword, setPeekPassword] = useState(false);
 
     function showPassword() {
@@ -30,18 +40,45 @@ const RightSide = () => {
         }
     }
 
+    function submitHandler(e) {
+        e.preventDefault()
+        setLoading(true)
+        dispatch(login(email, password))
+        setTimeout(() => {
+            window.location.href = `${process.env.REACT_APP_URL}`
+        }, 1000)
+    }
+
+    useEffect(() => {
+        if (typeof location.state !== 'undefined') {
+            if (Object.keys(location.state).indexOf('response') > -1) {
+                setSuccess(location.state.response)
+            }
+        }
+    }, [location.state])
+
     return (
         <Fragment>
             <h1 className="font-weight-bold">Sign In</h1>
             <p className="text-muted">Sign in with your data that you entered during your registration</p>
-            <Form>
+            {(success) ? <Alert variant="success">{success}</Alert> : ''}
+            {errorMsg ? <Alert variant="danger">{errorMsg}</Alert> : ''}
+            <Form
+                onSubmit={submitHandler}
+            >
                 <Form.Group controlId="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Write your email" className="p-4 rounded"></Form.Control>
+                    <Form.Control 
+                    onChange={e => setEmail(e.target.value)}
+                    value={email}
+                    type="email" placeholder="Write your email" className="p-4 rounded" required></Form.Control>
                 </Form.Group>
                 <Form.Group controlId="password" className="position-relative">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type={peekPassword === false ? 'password' : 'text'} placeholder="Write your password" className="p-4 rounded" />
+                    <Form.Control 
+                    onChange={e => setPassword(e.target.value)}
+                    value={password}
+                    type={peekPassword === false ? 'password' : 'text'} placeholder="Write your password" className="p-4 rounded" required />
                     <button onClick={(e) => {
                         e.preventDefault();
                         showPassword();
@@ -50,7 +87,7 @@ const RightSide = () => {
                         <img width="25" src={peekPassword === false ? eye : eyeOff} alt="eye"/>
                     </button>
                 </Form.Group>
-                <Button variant="primary" type="submit" className="btn-block py-3 rounded">
+                <Button variant="primary" type="submit" className={`btn-block py-3 rounded ${(loading) ? 'disabled cursor-default' : ''}`}>
                     Sign In
                 </Button>
             </Form>

@@ -1,6 +1,8 @@
 import { Fragment, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
+// Import Helpers
+import http from '../../helpers/http'
 // Import Components
 import Separator from '../Separator';
 // Import Images
@@ -41,10 +43,13 @@ const LeftSide = () => {
 }
 
 const RightSide = () => {
+    const history = useHistory()
     const [peekPassword, setPeekPassword] = useState(false);
     const [approveTerms, setApproveTerms] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState()
+    const [loading, setLoading] = useState(false)
 
     function showPassword() {
         if( peekPassword === false ){
@@ -54,13 +59,28 @@ const RightSide = () => {
         }
     }
 
-    function submitHandler() {
-        
+    async function submitHandler(e) {
+        e.preventDefault()
+        const credentials = new URLSearchParams()
+        credentials.append('email', email)
+        credentials.append('password', password)
+        try {
+            setLoading(true)
+            const response = await http().post('auth/register', credentials)
+            history.push({
+                pathname: '/auth/login',
+                state: { response: response.data.message }
+            })
+        } catch (error) {
+            setLoading(false)
+            setError(error.response.data.message)
+        }
     }
 
     return (
         <Fragment>
             <h4 className="mb-4">Fill your additional details</h4>
+            {error ? <Alert variant="danger">{error}</Alert> : ''}
             <Form
                 onSubmit={submitHandler}
             >
@@ -71,7 +91,7 @@ const RightSide = () => {
                         value={email}
                         type="email"
                         placeholder="Write your email"
-                        className="p-4 rounded" />
+                        className="p-4 rounded"/>
                 </Form.Group>
                 <Form.Group controlId="password" className="position-relative">
                     <Form.Label>Password</Form.Label>
@@ -95,7 +115,7 @@ const RightSide = () => {
                         type="checkbox" label="I agree to terms & conditions" className="text-muted" />
                 </Form.Group>
                 <Button
-                    variant="primary" type="submit" className={`btn-block py-3 rounded ${!approveTerms ? 'disabled' : ''}`}>
+                    variant="primary" type="submit" className={`btn-block py-3 rounded ${(!approveTerms || loading) ? 'disabled cursor-default' : ''}`}>
                     Join for free now
                 </Button>
             </Form>

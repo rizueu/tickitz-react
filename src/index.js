@@ -1,17 +1,17 @@
+import dotenv from 'dotenv'
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+dotenv.config({ path: '../.env' })
+
 ReactDOM.render(
 	<StrictMode>
-		<RecoilRoot>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</RecoilRoot>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
 	</StrictMode>,
 	document.getElementById('root')
 );

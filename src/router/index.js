@@ -1,5 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import PrivateRoute from './PrivateRoute'
 
 // Import Components
 import Home from '../views/Home';
@@ -25,7 +26,7 @@ const Router = () => {
                     <Footer />
                 </NavigationBar>
             </Route>
-            <Route path="/movies/:year/:slug">
+            <Route path="/movies/:id">
                 <Helmet>
                     <title>Movie Details - Tickitz</title>
                 </Helmet>

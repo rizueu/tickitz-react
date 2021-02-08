@@ -1,15 +1,11 @@
 import { Fragment, useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Nav, InputGroup, Alert } from 'react-bootstrap';
-import { useRecoilState, useRecoilValue } from 'recoil';
 
 // Import Picture
 import UserPic from '../images/user.png';
 
-// Dummy Data
-import { DataUser } from '../store';
-
 const AccountSettings = () => {
-    const [user, setUser] = useRecoilState(DataUser);
+    const [user, setUser] = useState();
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
     const [email, setEmail] = useState(user.email);
@@ -176,7 +172,7 @@ const OrderHistory = () => {
 
 const UserDashboard = () => {
     const [selectedPage, setSelectedPage] = useState('account-settings');
-    const User = useRecoilValue(DataUser);
+    // const User = useRecoilValue(DataUser);
 
     return (
         <div style={{ backgroundColor: "#F6F6F6" }} className="py-5">
@@ -195,7 +191,7 @@ const UserDashboard = () => {
                                 </div>
                                 <div className="text-center">
                                     <img src={UserPic} alt="user" className="img-fluid rounded-circle"/>
-                                    <h5>{ User.fullName }</h5>
+                                    <h5>Rizki Ramadhan</h5>
                                     <span className="text-muted">Moviegoers</span>
                                 </div>
                             </Card.Header>

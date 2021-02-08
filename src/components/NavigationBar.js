@@ -1,11 +1,34 @@
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Fragment, useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown, Form, FormControl } from 'react-bootstrap';
+import jwt_decode from 'jwt-decode'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { reset_token } from '../redux/actions/auth'
 
 // Import Images
 import NavBrand from '../images/svg/logo-primary.svg';
 
 const NavigationBar = (props) => {
+    const history = useHistory()
+    const dispatch = useDispatch()
+    const token = useSelector(state => state.auth.token)
+    let decodedToken
+    
+    if (token !== null) {
+        decodedToken = jwt_decode(token)
+    } else {
+        decodedToken = null
+    }
+
+    const logout = (e) => {
+        e.preventDefault()
+        dispatch(reset_token())
+        if (window.confirm("Do you really want to leave?")) {
+            history.push('/auth/login')
+        }
+    }
+
     return (
         <Fragment>
             <Navbar bg="light" expand="lg">
@@ -51,9 +74,19 @@ const NavigationBar = (props) => {
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Link className="btn btn-primary btn-block py-3 py-lg-2 px-4" to="/auth/register">
-                                    Sign Up
-                                </Link>
+                                {
+                                    (token !== null) ? (
+                                        <NavDropdown className="d-none d-lg-block text-center" title={(<img width="40" src={decodedToken.picture} alt="profile" className="rounded-circle" />)} id="basic-nav-dropdown">
+                                            <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                                            <NavDropdown.Divider />
+                                            <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+                                        </NavDropdown>
+                                    ) : (
+                                        <Link className="btn btn-primary btn-block py-3 py-lg-2 px-4" to="/auth/register">
+                                            Sign Up
+                                        </Link>
+                                    )
+                                }
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
