@@ -11,6 +11,7 @@ const initialState = {
   paymentMethod: null,
   seats: [],
   movieTitle: null,
+  timeId: null,
   showTimeId: null,
   cinemaId: null,
   movieId: null,
@@ -36,6 +37,7 @@ const orderReducer = (state=initialState, action) => {
           ticketCount: action.ticketCount,
           pricePerSeat: action.pricePerSeat,
           showTimeId: action.showTimeId,
+          timeId: action.timeId,
           cinemaId: action.cinemaId,
           movieId: action.movieId,
           category: action.category

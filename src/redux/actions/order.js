@@ -9,9 +9,10 @@ export const setOrder = (data) => {
       ticketCount: data.ticketCount,
       pricePerSeat: data.pricePerSeat,
       showTimeId: data.showTimeId,
+      timeId: data.timeId,
       cinemaId: data.cinemaId,
       movieId: data.movieId,
-      category: data.category
+      category: data.movieCategory
   }
 }
 

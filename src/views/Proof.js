@@ -1,8 +1,11 @@
 import { Card, Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux'
 import Ticket from '../components/Ticket';
 import qrcode from '../images/qrCode.png';
 
 const Proof = () => {
+    const order = useSelector(state => state.order)
+
     return (
         <div style={{ backgroundColor: "#F6F6F8" }} className="py-5">
             <div className="d-flex justify-content-center align-items-center">
@@ -10,13 +13,13 @@ const Proof = () => {
                     <Card.Body className="d-flex justify-content-center align-items-center flex-column px-5">
                         <h5 className="font-weight-bold my-4">Proof of Payment</h5>
                         <Ticket
-                            title="Spider-Man: Homecoming" 
+                            title={order.movieTitle}
                             date="07 July" 
-                            time="02:00pm" 
-                            category="PG-13" 
-                            count="3 pieces" 
-                            seats="C4, C5, C6"
-                            price="$30.00"
+                            time={order.ticketTime} 
+                            category={order.category}
+                            count={`${order.ticketCount} pieces`} 
+                            seats={order.seats.join(', ')}
+                            price={`Rp. ${order.totalPayment}`}
                             qrcode={qrcode}
                         />
                         <div className="d-flex ticket-button my-4">

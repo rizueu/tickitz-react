@@ -8,7 +8,7 @@ import { setOrder, selectTime } from '../redux/actions/order'
 const ShowtimesCard = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
-    const showtime = useSelector(state => state.showtimes.results)
+    let showtime = useSelector(state => state.showtimes.results)
     const [times, setTimes] = useState([])
     const [timeId, setTimeId] = useState(null)
     const [showTimeId, setShowTimeId] = useState(null)
@@ -20,6 +20,7 @@ const ShowtimesCard = (props) => {
     }
 
     function handleOrder(index) {
+        showtime["timeId"] = timeId
         dispatch(setOrder(showtime[index]))
         history.push({
             pathname: '/ticket/booking',
@@ -55,7 +56,7 @@ const ShowtimesCard = (props) => {
                                             <button 
                                             onClick={(e) => {
                                                 e.preventDefault()
-                                                selectTime(timesElement.showTime)
+                                                dispatch(selectTime(timesElement.showTime))
                                                 axios.get(`${process.env.REACT_APP_API_URL}api/v1/times/id?showTime=${timesElement.showTime}`).then(response => {
                                                     setTimeId(response.data.results)
                                                 })
