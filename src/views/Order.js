@@ -3,6 +3,7 @@ import { Link, useParams, useLocation, useHistory } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import Moment from 'react-moment'
+import moment from 'moment'
 import http from '../helpers/http'
 
 import logoDana from '../images/svg/logoDana.svg';
@@ -37,17 +38,34 @@ const Order = () => {
     const results = useSelector(state => state.order)
     const [soldSeat, setSoldSeat] = useState([])
 
+    // useEffect(() => {
+    //     const getSoldSeat = async () => {
+    //         try {
+    //             const response = await http(token).get(`api/v1/soldseats?showTimeId=${location.state.showTimeId}`)
+    //             setSoldSeat(current => {
+    //                 return [...current, ...response.data.results]
+    //             })
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
+    //     getSoldSeat()
+    //     console.log(soldSeat)
+    // }, [token, location, soldSeat])
+
     useEffect(() => {
         const getSoldSeat = async () => {
             try {
                 const response = await http(token).get(`api/v1/soldseats?showTimeId=${location.state.showTimeId}`)
-                setSoldSeat(response.data.results)
+                setSoldSeat(current => {
+                    return [...current, ...response.data.results]
+                })
             } catch (error) {
                 console.log(error)
             }
         }
         getSoldSeat()
-    }, [token, location])
+    }, [])
 
     if( method === 'booking' ) {
         const seatNum = ['1', '2', '3', '4', '5', '6', '7']
@@ -329,9 +347,10 @@ const Order = () => {
                     cinemaId: results.cinemaId,
                     timeId: results.timeId,
                     showTimeId: results.showTimeId,
-                    seats: results.seats,
-                    ticketDate: results.showTimeDate,
+                    seats: results.seats.join(', '),
+                    ticketDate: moment(results.showTimeDate).format('YYYY-MM-DD'),
                     ticketTime: results.ticketTime,
+                    ticketCount: results.ticketCount,
                     movieTitle: results.movieTitle,
                     cinemaName: results.cinemaName,
                     cinemaPoster: results.picture,

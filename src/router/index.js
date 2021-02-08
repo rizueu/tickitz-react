@@ -35,13 +35,13 @@ const Router = () => {
                     <Footer />
                 </NavigationBar>
             </Route>
-            <Route exact path="/ticket/:method">
+            <PrivateRoute exact path="/ticket/:method">
                 <NavigationBar>
                     <Order/>
                     <Footer/>
                 </NavigationBar>
-            </Route>
-            <Route path="/ticket/payment/result">
+            </PrivateRoute>
+            <PrivateRoute path="/ticket/payment/result">
                 <Helmet>
                     <title>Here's your proof of Payment - Tickitz</title>
                 </Helmet>
@@ -49,13 +49,13 @@ const Router = () => {
                     <Proof />
                     <Footer />
                 </NavigationBar>
-            </Route>
-            <Route path="/profile">
+            </PrivateRoute>
+            <PrivateRoute path="/profile">
                 <NavigationBar>
                     <UserDashboard/>
                     <Footer/>
                 </NavigationBar>
-            </Route>
+            </PrivateRoute>
             <Route path="/admin">
                 <NavigationBar>
                     <AdminDashboard/>

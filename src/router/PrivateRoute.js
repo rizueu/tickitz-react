@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import ParseToken from '../helpers/ParseToken'
+import { useSelector } from 'react-redux'
+import jwt_decode from 'jwt-decode';
 
 const PrivateRoute = ({ children, ...rest }) => {
+  const token = useSelector(state => state.auth.token)
+  let decodedToken
 
-  const [decodedToken, setDecodedToken] = useState(null)
-
-  useEffect(() => {
-    ParseToken()
-      .then(response => setDecodedToken(response))
-      .catch(response => setDecodedToken(response))
-  }, [])
+  if (token !== null) {
+      decodedToken = jwt_decode(token)
+  } else {
+      decodedToken = null
+  }
 
   return (
     <div>

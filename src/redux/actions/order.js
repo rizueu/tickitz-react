@@ -5,7 +5,7 @@ export const setOrder = (data) => {
       cinemaName: data.cinemaName,
       showTimeDate: data.showTimeDate,
       picture: data.picture,
-      cinemaCity: data.cinemaCity,
+      city: data.city,
       ticketCount: data.ticketCount,
       pricePerSeat: data.pricePerSeat,
       showTimeId: data.showTimeId,

@@ -44,9 +44,6 @@ const RightSide = () => {
         e.preventDefault()
         setLoading(true)
         dispatch(login(email, password))
-        setTimeout(() => {
-            window.location.href = `${process.env.REACT_APP_URL}`
-        }, 1000)
     }
 
     useEffect(() => {

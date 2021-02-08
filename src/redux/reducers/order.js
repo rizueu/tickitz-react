@@ -33,7 +33,7 @@ const orderReducer = (state=initialState, action) => {
           cinemaName: action.cinemaName,
           showTimeDate: action.showTimeDate,
           picture: action.picture,
-          cinemaCity: action.cinemaCity,
+          cinemaCity: action.city,
           ticketCount: action.ticketCount,
           pricePerSeat: action.pricePerSeat,
           showTimeId: action.showTimeId,

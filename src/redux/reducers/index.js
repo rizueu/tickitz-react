@@ -8,6 +8,7 @@ import authReducer from './auth'
 import moviesReducer from './movies'
 import showtimesReducer from './showtimes'
 import orderReducer from './order'
+import userReducer from './user'
 
 const rootPersistConfig = {
   key: 'root',
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   movies: moviesReducer,
   showtimes: showtimesReducer,
-  order: orderReducer
+  order: orderReducer,
+  user: userReducer
 })
 
 export default persistReducer(rootPersistConfig, rootReducer)
