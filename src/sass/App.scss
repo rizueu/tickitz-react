@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,500;0,700;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,500;0,700;1,500;1,700&display=swap");
 
 * {
-    font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
 }
 
 .separator {
   width: 100%;
-  border: 0.5px solid #DEDEDE;
+  border: 0.5px solid #dedede;
 }
 
-@import 'auth', 'home', 'movie', 'order', 'ticket', 'user';
+@import "auth", "home", "movie", "order", "ticket", "user", "viewAll";
 
 /* Customization here */
 $grid-breakpoints: (
@@ -18,13 +18,13 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px
+  xxl: 1400px,
 );
 
 $theme-colors: (
-    "light": #fff,
-    "dark": #000,
-    "primary": #5F2EEA,
+  "light": #fff,
+  "dark": #000,
+  "primary": #5f2eea,
 );
 
 @import "~bootstrap/scss/bootstrap.scss";

@@ -2,42 +2,48 @@ const initialState = {
   nowShowingMovies: [],
   upComingMovies: [],
   movie: {},
-  error: null
-}
+  error: null,
+};
 
-const moviesReducer = (state=initialState, action) => {
-  switch(action.type) {
-    case 'NOWSHOWING': {
+const moviesReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "NOWSHOWING": {
       return {
         ...state,
-        nowShowingMovies: action.nowShowingMovies
-
-      }
+        nowShowingMovies: action.nowShowingMovies,
+      };
     }
-    case 'UPCOMING': {
+    case "UPCOMING": {
       return {
         ...state,
-        upComingMovies: action.upComingMovies
-      }
+        upComingMovies: action.upComingMovies,
+      };
     }
-    case 'MOVIE': {
+    case "MOVIE": {
       return {
         ...state,
-        movie: action.results
-      }
+        movie: action.results,
+      };
     }
-    case 'ERROR_MESSAGE': {
+    case "ERROR_MESSAGE": {
       return {
         ...state,
-        error: action.error
-      }
+        error: action.error,
+      };
+    }
+    case "UPCOMING_ERROR": {
+      return {
+        ...state,
+        upComingMovies: [],
+        error: action.error,
+      };
     }
     default: {
       return {
-        ...state
-      }
+        ...state,
+      };
     }
   }
-}
+};
 
-export default moviesReducer
+export default moviesReducer;

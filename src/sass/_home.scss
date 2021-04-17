@@ -1,90 +1,89 @@
 .hero-text__home p {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .hero-text__home h1 {
-    margin-top: -15px;
+  margin-top: -15px;
 }
 
 .header-now-showing__home::after {
-    content: '';
-    display: block;
-    width: 85px;
-    margin-top: 10px;
-    margin-left: 25px;
-    border: 2px solid #5F2EEA;
+  content: "";
+  display: block;
+  width: 85px;
+  margin-top: 10px;
+  margin-left: 25px;
+  border: 2px solid #5f2eea;
 }
 
 .landscape-list__home {
-    display: flex;
-    overflow-x: scroll;
-    // overflow-y: hidden;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  display: flex;
+  overflow-x: scroll;
+  // overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .landscape-list__home::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .landscape-list__home .btn {
-    // min-width: fit-content !important;
-    min-width: 120px;
+  // min-width: fit-content !important;
+  min-width: 120px;
 }
 
 .now-showing__home .card {
-    min-width: fit-content !important;
-    background-color: transparent;
-    border: 3px solid white;
+  min-width: fit-content !important;
+  background-color: transparent;
+  border: 3px solid white;
 }
 
 .now-showing__home .card:hover {
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.17);
-
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.17);
 }
 
 .now-showing__home .card:hover > .movies-dropdown {
-    display: inline-block !important;
-    text-align: center;
+  display: inline-block !important;
+  text-align: center;
 }
 
 .upcoming-movies__home .card {
-    min-width: fit-content !important;
+  min-width: fit-content !important;
 }
 
 .schedule-show {
-    display: block;
+  display: block;
 }
 
 .schedule-show button {
-    font-size: 13px;
-    padding: 0;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
+  font-size: 13px;
+  padding: 0;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
-.price-section{
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
+.price-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
 }
 
 .showtimes-card:hover {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.17);
 }
 
 .showtimes-card .card-header {
-    border-top-left-radius: 1rem !important;
-    border-top-right-radius: 1rem !important;
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
 }
 
 @media only screen and (max-width: 768px) {
-    .hero-text__home p {
-        font-size: 20px;
-    }
+  .hero-text__home p {
+    font-size: 20px;
+  }
 
-    .hero-text__home h1 {
-        font-size: 2.5rem;
-    }
+  .hero-text__home h1 {
+    font-size: 2.5rem;
+  }
 }
