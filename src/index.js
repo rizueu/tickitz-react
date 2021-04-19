@@ -1,19 +1,19 @@
-import dotenv from 'dotenv'
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import dotenv from "dotenv";
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import { HashRouter } from "react-router-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-dotenv.config({ path: '../.env' })
+dotenv.config({ path: "../.env" });
 
 ReactDOM.render(
-	<StrictMode>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
-	</StrictMode>,
-	document.getElementById('root')
+  <StrictMode>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </StrictMode>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

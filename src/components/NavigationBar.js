@@ -8,7 +8,6 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap";
-import jwt_decode from "jwt-decode";
 
 import { useSelector, useDispatch } from "react-redux";
 import { reset_token } from "../redux/actions/auth";
@@ -22,13 +21,6 @@ const NavigationBar = (props) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user);
-  let decodedToken;
-
-  if (token !== null) {
-    decodedToken = jwt_decode(token);
-  } else {
-    decodedToken = null;
-  }
 
   const logout = (e) => {
     e.preventDefault();
@@ -38,7 +30,7 @@ const NavigationBar = (props) => {
 
   useEffect(() => {
     dispatch(getUser(token));
-  }, []);
+  });
 
   return (
     <Fragment>

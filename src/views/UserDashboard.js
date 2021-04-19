@@ -17,21 +17,17 @@ import http from "../helpers/http";
 import jwtdecode from "jwt-decode";
 import Moment from "react-moment";
 
-// Import Picture
-import UserPic from "../images/user.png";
-
 const AccountSettings = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     dispatch(getUser(token));
-  }, []);
+  });
 
   const user = useSelector((state) => state.user);
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
-  const [email, setEmail] = useState(user.email);
   const [phoneNumber, setPhoneNumber] = useState(user.phone);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -152,7 +148,6 @@ const AccountSettings = () => {
                     <Form.Label>E-mail</Form.Label>
                     <Form.Control
                       type="email"
-                      onChange={(e) => setEmail(e.target.value)}
                       value={user.email}
                       className="rounded p-4"
                       disabled
@@ -278,7 +273,7 @@ const OrderHistory = () => {
       }
     };
     getUserHistory();
-  }, []);
+  });
 
   return (
     <Fragment>
@@ -372,10 +367,7 @@ const UserDashboard = () => {
         const formData = new FormData();
         formData.append("picture", picture);
         try {
-          const { data } = await http(token).patch(
-            "auth/user/upload",
-            formData
-          );
+          await http(token).patch("auth/user/upload", formData);
           dispatch(getUser(token));
           setLoading(false);
         } catch (error) {

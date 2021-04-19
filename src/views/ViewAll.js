@@ -198,9 +198,7 @@ export default class ViewAll extends Component {
                   }}
                   className="page-item"
                 >
-                  <a className="page-link" href="#">
-                    Previous
-                  </a>
+                  <p className="page-link">Previous</p>
                 </li>
                 {[...Array(this.state.totalPage)].map((element, i) => {
                   return (
@@ -212,9 +210,7 @@ export default class ViewAll extends Component {
                           : `page-item`
                       }
                     >
-                      <a className="page-link" href="#">
-                        {i + 1}
-                      </a>
+                      <p className="page-link">{i + 1}</p>
                     </li>
                   );
                 })}
@@ -227,9 +223,7 @@ export default class ViewAll extends Component {
                   }}
                   className="page-item"
                 >
-                  <a className="page-link" href="#">
-                    Next
-                  </a>
+                  <p className="page-link">Next</p>
                 </li>
               </ul>
             </nav>

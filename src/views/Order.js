@@ -73,7 +73,7 @@ const Order = () => {
       }
     };
     getSoldSeat();
-  }, []);
+  });
 
   if (method === "booking") {
     console.log(soldSeat);
