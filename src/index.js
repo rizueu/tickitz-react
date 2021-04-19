@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -9,9 +9,9 @@ dotenv.config({ path: "../.env" });
 
 ReactDOM.render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById("root")
 );
