@@ -1,36 +1,28 @@
-import { Redirect, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux'
-import jwt_decode from 'jwt-decode';
+import { Redirect, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const token = useSelector(state => state.auth.token)
-  let decodedToken
-
-  if (token !== null) {
-      decodedToken = jwt_decode(token)
-  } else {
-      decodedToken = null
-  }
+  const token = useSelector((state) => state.auth.token);
 
   return (
     <div>
       <Route
         {...rest}
-        render={({ location }) => 
-          decodedToken ? (
+        render={({ location }) =>
+          token ? (
             children
           ) : (
             <Redirect
               to={{
                 pathname: "/auth/login",
-                state: { from: location }
+                state: { from: location },
               }}
             />
           )
         }
-    />
+      />
     </div>
-  )
-}
+  );
+};
 
-export default PrivateRoute
+export default PrivateRoute;

@@ -18,7 +18,7 @@ import Footer from "../components/Footer";
 const Router = () => {
   return (
     <Switch>
-      <Route path="/" exact>
+      <PrivateRoute path="/" exact>
         <Helmet>
           <title>Home - Tickitz</title>
         </Helmet>
@@ -26,7 +26,7 @@ const Router = () => {
           <Home />
           <Footer />
         </NavigationBar>
-      </Route>
+      </PrivateRoute>
       <Route path="/movies/:id">
         <Helmet>
           <title>Movie Details - Tickitz</title>
